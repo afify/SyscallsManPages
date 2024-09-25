@@ -1,0 +1,2944 @@
+.TH syscallarg_linux 7 syscallarg_linux
+.TS
+tab(;) allbox;
+lb lb lb lb lb lb lb lb
+l l l l l l l l.
+%rax;System call;%rdi;%rsi;%rdx;%r10;%r8;%r9
+0;sys_read;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIchar *\fR
+buf
+T};T{
+\fIsize_t\fR
+count
+T}
+1;sys_write;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIconst char *\fR
+buf
+T};T{
+\fIsize_t\fR
+count
+T}
+2;sys_open;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIint\fR
+flags
+T};T{
+\fIint\fR
+mode
+T}
+3;sys_close;T{
+\fIunsigned int\fR
+fd
+T}
+4;sys_stat;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIstruct stat *\fR
+statbuf
+T}
+5;sys_fstat;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIstruct stat *\fR
+statbuf
+T}
+6;sys_lstat;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIstruct stat *\fR
+statbuf
+T}
+7;sys_poll;T{
+\fIstruct poll_fd *\fR
+ufds
+T};T{
+\fIunsigned int\fR
+nfds
+T};T{
+\fIlong\fR
+timeout_msecs
+T}
+8;sys_lseek;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIoff_t\fR
+offset
+T};T{
+\fIunsigned int\fR
+origin
+T}
+9;sys_mmap;T{
+\fIunsigned long\fR
+addr
+T};T{
+\fIunsigned long\fR
+len
+T};T{
+\fIunsigned long\fR
+prot
+T};T{
+\fIunsigned long\fR
+flags
+T};T{
+\fIunsigned long\fR
+fd
+T};T{
+\fIunsigned long\fR
+off
+T}
+10;sys_mprotect;T{
+\fIunsigned long\fR
+start
+T};T{
+\fIsize_t\fR
+len
+T};T{
+\fIunsigned long\fR
+prot
+T}
+11;sys_munmap;T{
+\fIunsigned long\fR
+addr
+T};T{
+\fIsize_t\fR
+len
+T}
+12;sys_brk;T{
+\fIunsigned long\fR
+brk
+T}
+13;sys_rt_sigaction;T{
+\fIint\fR
+sig
+T};T{
+\fIconst struct sigaction *\fR
+act
+T};T{
+\fIstruct sigaction *\fR
+oact
+T};T{
+\fIsize_t\fR
+sigsetsize
+T}
+14;sys_rt_sigprocmask;T{
+\fIint\fR
+how
+T};T{
+\fIsigset_t *\fR
+nset
+T};T{
+\fIsigset_t *\fR
+oset
+T};T{
+\fIsize_t\fR
+sigsetsize
+T}
+15;sys_rt_sigreturn;T{
+\fIunsigned long\fR
+__unused
+T}
+16;sys_ioctl;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIunsigned int\fR
+cmd
+T};T{
+\fIunsigned long\fR
+arg
+T}
+17;sys_pread64;T{
+\fIunsigned long\fR
+fd
+T};T{
+\fIchar *\fR
+buf
+T};T{
+\fIsize_t\fR
+count
+T};T{
+\fIloff_t\fR
+pos
+T}
+18;sys_pwrite64;T{
+\fIunsigned int\fR
+fd
+T};T{
+\fIconst char *\fR
+buf
+T};T{
+\fIsize_t\fR
+count
+T};T{
+\fIloff_t\fR
+pos
+T}
+19;sys_readv;T{
+\fIunsigned long\fR
+fd
+T};T{
+\fIconst struct iovec *\fR
+vec
+T};T{
+\fIunsigned long\fR
+vlen
+T}
+20;sys_writev;T{
+\fIunsigned long\fR
+fd
+T};T{
+\fIconst struct iovec *\fR
+vec
+T};T{
+\fIunsigned long\fR
+vlen
+T}
+21;sys_access;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIint\fR
+mode
+T}
+22;sys_pipe;T{
+\fIint *\fR
+filedes
+T}
+23;sys_select;T{
+\fIint\fR
+n
+T};T{
+\fIfd_set *\fR
+inp
+T};T{
+\fIfd_set *\fR
+outp
+T};T{
+\fIfd_set*\fR
+exp
+T};T{
+\fIstruct timeval *\fR
+tvp
+T}
+24;sys_sched_yield;
+25;sys_mremap;T{
+\fIunsigned long\fR
+addr
+T};T{
+\fIunsigned long\fR
+old_len
+T};T{
+\fIunsigned long\fR
+new_len
+T};T{
+\fIunsigned long\fR
+flags
+T};T{
+\fIunsigned long\fR
+new_addr
+T}
+26;sys_msync;T{
+\fIunsigned long\fR
+start
+T};T{
+\fIsize_t\fR
+len
+T};T{
+\fIint\fR
+flags
+T}
+27;sys_mincore;T{
+\fIunsigned long\fR
+start
+T};T{
+\fIsize_t\fR
+len
+T};T{
+\fIunsigned char *\fR
+vec
+T}
+28;sys_madvise;T{
+\fIunsigned long\fR
+start
+T};T{
+\fIsize_t\fR
+len_in
+T};T{
+\fIint\fR
+behavior
+T}
+29;sys_shmget;T{
+\fIkey_t\fR
+key
+T};T{
+\fIsize_t\fR
+size
+T};T{
+\fIint\fR
+shmflg
+T}
+30;sys_shmat;T{
+\fIint\fR
+shmid
+T};T{
+\fIchar *\fR
+shmaddr
+T};T{
+\fIint\fR
+T}
+31;sys_shmctl;T{
+\fIint\fR
+shmid
+T};T{
+\fIint \fR
+cmd
+T};T{
+\fIstruct shmid_ds *\fR
+buf
+T}
+32;sys_dup;T{
+\fIunsigned \fR
+int
+fildes
+T}
+33;sys_dup2;T{
+\fIunsigned int \fR
+oldfd
+T};T{
+\fIunsigned int \fR
+newfd
+T}
+34;sys_pause
+35;sys_nanosleep;T{
+\fIstruct timespec *\fR
+rqtp
+T};T{
+\fIstruct timespec *\fR
+rmtp
+T}
+36;sys_getitimer;T{
+\fIint \fR
+which
+T};T{
+\fIstruct itimerval *\fR
+value
+T}
+37;sys_alarm;T{
+\fIunsigned int \fR
+seconds
+T}
+38;sys_setitimer;T{
+\fIint \fR
+which
+T};T{
+\fIstruct itimerval *\fR
+value
+T};T{
+\fIstruct itimerval *\fR
+ovalue
+T}
+39;sys_getpid
+40;sys_sendfile;T{
+\fIint \fR
+out_fd
+T};T{
+\fIint \fR
+in_fd
+T};T{
+\fIoff_t *\fR
+offset
+T};T{
+\fIsize_t \fR
+count
+T}
+41;sys_socket;T{
+\fIint \fR
+family
+T};T{
+\fIint \fR
+type
+T};T{
+\fIint \fR
+protocol
+T}
+42;sys_connect;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sockaddr *\fR
+uservaddr
+T};T{
+\fIint \fR
+addrlen
+T}
+43;sys_accept;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sockaddr *\fR
+upeer_sockaddr
+T};T{
+\fIint *\fR
+upeer_addrlen
+T}
+44;sys_sendto;T{
+\fIint \fR
+fd
+T};T{
+\fIvoid *\fR
+buff
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIunsigned \fR
+flags
+T};T{
+\fIstruct sockaddr *\fR
+addr
+T};T{
+\fIint \fR
+addr_len
+T}
+45;sys_recvfrom;T{
+\fIint \fR
+fd
+T};T{
+\fIvoid *\fR
+ubuf
+T};T{
+\fIsize_t \fR
+size
+T};T{
+\fIunsigned \fR
+flags
+T};T{
+\fIstruct sockaddr *\fR
+addr
+T};T{
+\fIint *\fR
+addr_len
+T}
+46;sys_sendmsg;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct msghdr *\fR
+msg
+T};T{
+\fIunsigned \fR
+flags
+T}
+47;sys_recvmsg;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct msghdr *\fR
+msg
+T};T{
+\fIunsigned int \fR
+flags
+T}
+48;sys_shutdown;T{
+\fIint \fR
+fd
+T};T{
+\fIint \fR
+how
+T}
+49;sys_bind;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sokaddr *\fR
+umyaddr
+T};T{
+\fIint \fR
+addrlen
+T}
+50;sys_listen;T{
+\fIint \fR
+fd
+T};T{
+\fIint \fR
+backlog
+T}
+51;sys_getsockname;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sockaddr *\fR
+usockaddr
+T};T{
+\fIint *\fR
+usockaddr_len
+T}
+52;sys_getpeername;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sockaddr *\fR
+usockaddr
+T};T{
+\fIint *\fR
+usockaddr_len
+T}
+53;sys_socketpair;T{
+\fIint \fR
+family
+T};T{
+\fIint \fR
+type
+T};T{
+\fIint \fR
+protocol
+T};T{
+\fIint *\fR
+usockvec
+T}
+54;sys_setsockopt;T{
+\fIint \fR
+fd
+T};T{
+\fIint \fR
+level
+T};T{
+\fIint \fR
+optname
+T};T{
+\fIchar *\fR
+optval
+T};T{
+\fIint \fR
+optlen
+T}
+55;sys_getsockopt;T{
+\fIint \fR
+fd
+T};T{
+\fIint \fR
+level
+T};T{
+\fIint \fR
+optname
+T};T{
+\fIchar *\fR
+optval
+T};T{
+\fIint *\fR
+optlen
+T}
+56;sys_clone;T{
+\fIunsigned long \fR
+clone_flags
+T};T{
+\fIunsigned long \fR
+newsp
+T};T{
+\fIvoid *\fR
+parent_tid
+T};T{
+\fIvoid *\fR
+child_tid
+T};T{
+\fIunsigned int \fR
+tid
+T}
+57;sys_fork
+58;sys_vfork
+59;sys_execve;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIconst char *const argv[]\fR
+T};T{
+\fIconst char *const envp[]\fR
+T}
+60;sys_exit;T{
+\fIint \fR
+error_code
+T}
+61;sys_wait4;T{
+\fIpid_t \fR
+upid
+T};T{
+\fIint *\fR
+stat_addr
+T};T{
+\fIint \fR
+options
+T};T{
+\fIstruct rusage *\fR
+ru
+T}
+62;sys_kill;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+sig
+T}
+63;sys_uname;T{
+\fIstruct old_utsname *\fR
+name
+T}
+64;sys_semget;T{
+\fIkey_t \fR
+key
+T};T{
+\fIint \fR
+nsems
+T};T{
+\fIint \fR
+semflg
+T}
+65;sys_semop;T{
+\fIint \fR
+semid
+T};T{
+\fIstruct sembuf *\fR
+tsops
+T};T{
+\fIunsigned \fR
+nsops
+T}
+66;sys_semctl;T{
+\fIint \fR
+semid
+T};T{
+\fIint \fR
+semnum
+T};T{
+\fIint \fR
+cmd
+T};T{
+\fIunion semun \fR
+arg
+T}
+67;sys_shmdt;T{
+\fIchar *\fR
+shmaddr
+T}
+68;sys_msgget;T{
+\fIkey_t \fR
+key
+T};T{
+\fIint \fR
+msgflg
+T}
+69;sys_msgsnd;T{
+\fIint \fR
+msqid
+T};T{
+\fIstruct msgbuf *\fR
+msgp
+T};T{
+\fIsize_t \fR
+msgsz
+T};T{
+\fIint \fR
+msgflg
+T}
+70;sys_msgrcv;T{
+\fIint \fR
+msqid
+T};T{
+\fIstruct msgbuf *\fR
+msgp
+T};T{
+\fIsize_t \fR
+msgsz
+T};T{
+\fIlong \fR
+msgtyp
+T};T{
+\fIint \fR
+msgflg
+T}
+71;sys_msgctl;T{
+\fIint \fR
+msqid
+T};T{
+\fIint \fR
+cmd
+T};T{
+\fIstruct msqid_ds *\fR
+buf
+T}
+72;sys_fcntl;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIunsigned int \fR
+cmd
+T};T{
+\fIunsigned long \fR
+arg
+T}
+73;sys_flock;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIunsigned int \fR
+cmd
+T}
+74;sys_fsync;T{
+\fIunsigned int \fR
+fd
+T}
+75;sys_fdatasync;T{
+\fIunsigned int \fR
+fd
+T}
+76;sys_truncate;T{
+\fIconst char *\fR
+path
+T};T{
+\fIlong \fR
+length
+T}
+77;sys_ftruncate;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIunsigned long \fR
+length
+T}
+78;sys_getdents;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIstruct linux_dirent *\fR
+dirent
+T};T{
+\fIunsigned int \fR
+count
+T}
+79;sys_getcwd;T{
+\fIchar *\fR
+buf
+T};T{
+\fIunsigned long \fR
+size
+T}
+80;sys_chdir;T{
+\fIconst char *\fR
+filename
+T}
+81;sys_fchdir;T{
+\fIunsigned int \fR
+fd
+T}
+82;sys_rename;T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIconst char *\fR
+newname
+T}
+83;sys_mkdir;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIint \fR
+mode
+T}
+84;sys_rmdir;T{
+\fIconst char *\fR
+pathname
+T}
+85;sys_creat;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIint \fR
+mode
+T}
+86;sys_link;T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIconst char *\fR
+newname
+T}
+87;sys_unlink;T{
+\fIconst char *\fR
+pathname
+T}
+88;sys_symlink;T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIconst char *\fR
+newname
+T}
+89;sys_readlink;T{
+\fIconst char *\fR
+path
+T};T{
+\fIchar *\fR
+buf
+T};T{
+\fIint \fR
+bufsiz
+T}
+90;sys_chmod;T{
+\fIconst char *\fR
+filename
+T};T{
+\fImode_t \fR
+mode
+T}
+91;sys_fchmod;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fImode_t \fR
+mode
+T}
+92;sys_chown;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIuid_t \fR
+user
+T};T{
+\fIgid_t \fR
+group
+T}
+93;sys_fchown;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIuid_t \fR
+user
+T};T{
+\fIgid_t \fR
+group
+T}
+94;sys_lchown;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIuid_t \fR
+user
+T};T{
+\fIgid_t \fR
+group
+T}
+95;sys_umask;T{
+\fIint \fR
+mask
+T}
+96;sys_gettimeofday;T{
+\fIstruct timeval *\fR
+tv
+T};T{
+\fIstruct timezone *\fR
+tz
+T}
+97;sys_getrlimit;T{
+\fIunsigned int \fR
+resource
+T};T{
+\fIstruct rlimit *\fR
+rlim
+T}
+98;sys_getrusage;T{
+\fIint \fR
+who
+T};T{
+\fIstruct rusage *\fR
+ru
+T}
+99;sys_sysinfo;T{
+\fIstruct sysinfo *\fR
+info
+T}
+100;sys_times;T{
+\fIstruct sysinfo *\fR
+info
+T}
+101;sys_ptrace;T{
+\fIlong \fR
+request
+T};T{
+\fIlong \fR
+pid
+T};T{
+\fIunsigned long \fR
+addr
+T};T{
+\fIunsigned long \fR
+data
+T}
+102;sys_getuid
+103;sys_syslog;T{
+\fIint \fR
+type
+T};T{
+\fIint \fR
+len
+T};T{
+\fIchar *\fR
+buf
+T}
+104;sys_getgid
+105;sys_setuid;T{
+\fIuid_t \fR
+uid
+T}
+106;sys_setgid;T{
+\fIgid_t \fR
+gid
+T}
+107;sys_geteuid
+108;sys_getegid
+109;sys_setpgid;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIpid_t \fR
+pgid
+T}
+110;sys_getppid
+111;sys_getpgrp
+112;sys_setsid
+113;sys_setreuid;T{
+\fIuid_t \fR
+ruid
+T};T{
+\fIuid_t \fR
+euid
+T}
+114;sys_setregid;T{
+\fIgid_t \fR
+rgid
+T};T{
+\fIgid_t \fR
+egid
+T}
+115;sys_getgroups;T{
+\fIint \fR
+gidsetsize
+T};T{
+\fIgid_t *\fR
+grouplist
+T}
+116;sys_setgroups;T{
+\fIint \fR
+gidsetsize
+T};T{
+\fIgid_t *\fR
+grouplist
+T}
+117;sys_setresuid;T{
+\fIuid_t *\fR
+ruid
+T};T{
+\fIuid_t *\fR
+euid
+T};T{
+\fIuid_t *\fR
+suid
+T}
+118;sys_getresuid;T{
+\fIuid_t *\fR
+ruid
+T};T{
+\fIuid_t *\fR
+euid
+T};T{
+\fIuid_t *\fR
+suid
+T}
+119;sys_setresgid;T{
+\fIgid_t \fR
+rgid
+T};T{
+\fIgid_t \fR
+egid
+T};T{
+\fIgid_t \fR
+sgid
+T}
+120;sys_getresgid;T{
+\fIgid_t *\fR
+rgid
+T};T{
+\fIgid_t *\fR
+egid
+T};T{
+\fIgid_t *\fR
+sgid
+T}
+121;sys_getpgid;T{
+\fIpid_t \fR
+pid
+T}
+122;sys_setfsuid;T{
+\fIuid_t \fR
+uid
+T}
+123;sys_setfsgid;T{
+\fIgid_t \fR
+gid
+T}
+124;sys_getsid;T{
+\fIpid_t \fR
+pid
+T}
+125;sys_capget;T{
+\fIcap_user_header_t \fR
+header
+T};T{
+\fIcap_user_data_t \fR
+dataptr
+T}
+126;sys_capset;T{
+\fIcap_user_header_t \fR
+header
+T};T{
+\fIconst cap_user_data_t \fR
+data
+T}
+127;sys_rt_sigpending;T{
+\fIsigset_t *\fR
+set
+T};T{
+\fIsize_t \fR
+sigsetsize
+T}
+128;sys_rt_sigtimedwait;T{
+\fIconst sigset_t *\fR
+uthese
+T};T{
+\fIsiginfo_t *\fR
+uinfo
+T};T{
+\fIconst struct timespec *\fR
+uts
+T};T{
+\fIsize_t \fR
+sigsetsize
+T}
+129;sys_rt_sigqueueinfo;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+sig
+T};T{
+\fIsiginfo_t *\fR
+uinfo
+T}
+130;sys_rt_sigsuspend;T{
+\fIsigset_t *\fR
+unewset
+T};T{
+\fIsize_t \fR
+sigsetsize
+T}
+131;sys_sigaltstack;T{
+\fIconst stack_t *\fR
+uss
+T};T{
+\fIstack_t *\fR
+uoss
+T}
+132;sys_utime;T{
+\fIchar *\fR
+filename
+T};T{
+\fIstruct utimbuf *\fR
+times
+T}
+133;sys_mknod;T{
+\fIconst char *\fR
+filename
+T};T{
+\fIumode_t \fR
+mode
+T};T{
+\fIunsigned \fR
+dev
+T}
+134;sys_uselib;T{
+NOT IMPLEMENTED
+T}
+135;sys_personality;T{
+\fIunsigned int \fR
+personality
+T}
+136;sys_ustat;T{
+\fIunsigned \fR
+dev
+T};T{
+\fIstruct ustat *\fR
+ubuf
+T}
+137;sys_statfs;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIstruct statfs *\fR
+buf
+T}
+138;sys_fstatfs;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIstruct statfs *\fR
+buf
+T}
+139;sys_sysfs;T{
+\fIint \fR
+option
+T};T{
+\fIunsigned long arg1\fR
+T};T{
+\fIunsigned long arg2\fR
+T}
+140;sys_getpriority;T{
+\fIint \fR
+which
+T};T{
+\fIint \fR
+who
+T}
+141;sys_setpriority;T{
+\fIint \fR
+which
+T};T{
+\fIint \fR
+who
+T};T{
+\fIint \fR
+niceval
+T}
+142;sys_sched_setparam;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIstruct sched_param *\fR
+param
+T}
+143;sys_sched_getparam;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIstruct sched_param *\fR
+param
+T}
+144;sys_sched_setscheduler;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+policy
+T};T{
+\fIstruct sched_param *\fR
+param
+T}
+145;sys_sched_getscheduler;T{
+\fIpid_t \fR
+pid
+T}
+146;sys_sched_get_priority_max;T{
+\fIint \fR
+policy
+T}
+147;sys_sched_get_priority_min;T{
+\fIint \fR
+policy
+T}
+148;sys_sched_rr_get_interval;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIstruct timespec *\fR
+interval
+T}
+149;sys_mlock;T{
+\fIunsigned long \fR
+start
+T};T{
+\fIsize_t \fR
+len
+T}
+150;sys_munlock;T{
+\fIunsigned long \fR
+start
+T};T{
+\fIsize_t \fR
+len
+T}
+151;sys_mlockall;T{
+\fIint \fR
+flags
+T}
+152;sys_munlockall
+153;sys_vhangup
+154;sys_modify_ldt;T{
+\fIint \fR
+func
+T};T{
+\fIvoid *\fR
+ptr
+T};T{
+\fIunsigned long \fR
+bytecount
+T}
+155;sys_pivot_root;T{
+\fIconst char *\fR
+new_root
+T};T{
+\fIconst char *\fR
+put_old
+T}
+156;sys__sysctl;T{
+\fIstruct __sysctl_args *\fR
+args
+T}
+157;sys_prctl;T{
+\fIint \fR
+option
+T};T{
+\fIunsigned long arg2\fR
+T};T{
+\fIunsigned long arg3\fR
+T};T{
+\fIunsigned long arg4\fR
+T};T{
+\fIunsigned long arg5\fR
+T}
+158;sys_arch_prctl;T{
+\fIstruct task_struct *\fR
+task
+T};T{
+\fIint \fR
+code
+T};T{
+\fIunsigned long *\fR
+addr
+T}
+159;sys_adjtimex;T{
+\fIstruct timex *\fR
+txc_p
+T}
+160;sys_setrlimit;T{
+\fIunsigned int \fR
+resource
+T};T{
+\fIstruct rlimit *\fR
+rlim
+T}
+161;sys_chroot;T{
+\fIconst char *\fR
+filename
+T}
+162;sys_sync
+163;sys_acct;T{
+\fIconst char *\fR
+name
+T}
+164;sys_settimeofday;T{
+\fIstruct timeval *\fR
+tv
+T};T{
+\fIstruct timezone *\fR
+tz
+T}
+165;sys_mount;T{
+\fIchar *\fR
+dev_name
+T};T{
+\fIchar *\fR
+dir_name
+T};T{
+\fIchar *\fR
+type
+T};T{
+\fIunsigned long \fR
+flags
+T};T{
+\fIvoid *\fR
+data
+T}
+166;sys_umount2;T{
+\fIconst char *\fR
+target
+T};T{
+\fIint \fR
+flags
+T}
+167;sys_swapon;T{
+\fIconst char *\fR
+specialfile
+T};T{
+\fIint \fR
+swap_flags
+T}
+168;sys_swapoff;T{
+\fIconst char *\fR
+specialfile
+T}
+169;sys_reboot;T{
+\fIint magic1\fR
+T};T{
+\fIint magic2\fR
+T};T{
+\fIunsigned int \fR
+cmd
+T};T{
+\fIvoid *\fR
+arg
+T}
+170;sys_sethostname;T{
+\fIchar *\fR
+name
+T};T{
+\fIint \fR
+len
+T}
+171;sys_setdomainname;T{
+\fIchar *\fR
+name
+T};T{
+\fIint \fR
+len
+T}
+172;sys_iopl;T{
+\fIunsigned int \fR
+level
+T};T{
+\fIstruct pt_regs *\fR
+regs
+T}
+173;sys_ioperm;T{
+\fIunsigned long \fR
+from
+T};T{
+\fIunsigned long \fR
+num
+T};T{
+\fIint \fR
+turn_on
+T}
+174;sys_create_module;T{
+REMOVED IN Linux 2.6
+T}
+175;sys_init_module;T{
+\fIvoid *\fR
+umod
+T};T{
+\fIunsigned long \fR
+len
+T};T{
+\fIconst char *\fR
+uargs
+T}
+176;sys_delete_module;T{
+\fIconst chat *\fR
+name_user
+T};T{
+\fIunsigned int \fR
+flags
+T}
+177;sys_get_kernel_syms;T{
+REMOVED IN Linux 2.6
+T}
+178;sys_query_module;T{
+REMOVED IN Linux 2.6
+T}
+179;sys_quotactl;T{
+\fIunsigned int \fR
+cmd
+T};T{
+\fIconst char *\fR
+special
+T};T{
+\fIqid_t \fR
+id
+T};T{
+\fIvoid *\fR
+addr
+T}
+180;sys_nfsservctl;T{
+NOT IMPLEMENTED
+T}
+181;sys_getpmsg;T{
+NOT IMPLEMENTED
+T}
+182;sys_putpmsg;T{
+NOT IMPLEMENTED
+T}
+183;sys_afs_syscall;T{
+NOT IMPLEMENTED
+T}
+184;sys_tuxcall;T{
+NOT IMPLEMENTED
+T}
+185;sys_security;T{
+NOT IMPLEMENTED
+T}
+186;sys_gettid
+187;sys_readahead;T{
+\fIint \fR
+fd
+T};T{
+\fIloff_t \fR
+offset
+T};T{
+\fIsize_t \fR
+count
+T}
+188;sys_setxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIconst void *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T};T{
+\fIint \fR
+flags
+T}
+189;sys_lsetxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIconst void *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T};T{
+\fIint \fR
+flags
+T}
+190;sys_fsetxattr;T{
+\fIint \fR
+fd
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIconst void *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T};T{
+\fIint \fR
+flags
+T}
+191;sys_getxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIvoid *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T}
+192;sys_lgetxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIvoid *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T}
+193;sys_fgetxattr;T{
+\fIint \fR
+fd
+T};T{
+\fIconst har *\fR
+name
+T};T{
+\fIvoid *\fR
+value
+T};T{
+\fIsize_t \fR
+size
+T}
+194;sys_listxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIchar *\fR
+list
+T};T{
+\fIsize_t \fR
+size
+T}
+195;sys_llistxattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIchar *\fR
+list
+T};T{
+\fIsize_t \fR
+size
+T}
+196;sys_flistxattr;T{
+\fIint \fR
+fd
+T};T{
+\fIchar *\fR
+list
+T};T{
+\fIsize_t \fR
+size
+T}
+197;sys_removexattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T}
+198;sys_lremovexattr;T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIconst char *\fR
+name
+T}
+199;sys_fremovexattr;T{
+\fIint \fR
+fd
+T};T{
+\fIconst char *\fR
+name
+T}
+200;sys_tkill;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIing \fR
+sig
+T}
+201;sys_time;T{
+\fItime_t *\fR
+tloc
+T}
+202;sys_futex;T{
+\fIu32 *\fR
+uaddr
+T};T{
+\fIint \fR
+op
+T};T{
+\fIu32 \fR
+val
+T};T{
+\fIstruct timespec *\fR
+utime
+T};T{
+\fIu32 *uaddr2\fR
+T};T{
+\fIu32 val3\fR
+T}
+203;sys_sched_setaffinity;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIunsigned int \fR
+len
+T};T{
+\fIunsigned long *\fR
+user_mask_ptr
+T}
+204;sys_sched_getaffinity;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIunsigned int \fR
+len
+T};T{
+\fIunsigned long *\fR
+user_mask_ptr
+T}
+205;sys_set_thread_area;T{
+NOT IMPLEMENTED. Use arch_prctl
+T}
+206;sys_io_setup;T{
+\fIunsigned \fR
+nr_events
+T};T{
+\fIaio_context_t *\fR
+ctxp
+T}
+207;sys_io_destroy;T{
+\fIaio_context_t \fR
+ctx
+T}
+208;sys_io_getevents;T{
+\fIaio_context_t \fR
+ctx_id
+T};T{
+\fIlong \fR
+min_nr
+T};T{
+\fIlong \fR
+nr
+T};T{
+\fIstruct io_event *\fR
+events
+T}
+209;sys_io_submit;T{
+\fIaio_context_t \fR
+ctx_id
+T};T{
+\fIlong \fR
+nr
+T};T{
+\fIstruct iocb **\fR
+iocbpp
+T}
+210;sys_io_cancel;T{
+\fIaio_context_t \fR
+ctx_id
+T};T{
+\fIstruct iocb *\fR
+iocb
+T};T{
+\fIstruct io_event *\fR
+result
+T}
+211;sys_get_thread_area;T{
+NOT IMPLEMENTED. Use arch_prctl
+T}
+212;sys_lookup_dcookie;T{
+\fIu64 cookie64\fR
+T};T{
+\fIlong \fR
+buf
+T};T{
+\fIlong \fR
+len
+T}
+213;sys_epoll_create;T{
+\fIint \fR
+size
+T}
+214;sys_epoll_ctl_old;T{
+NOT IMPLEMENTED
+T}
+215;sys_epoll_wait_old;T{
+NOT IMPLEMENTED
+T}
+216;sys_remap_file_pages;T{
+\fIunsigned long \fR
+start
+T};T{
+\fIunsigned long \fR
+size
+T};T{
+\fIunsigned long \fR
+prot
+T};T{
+\fIunsigned long \fR
+pgoff
+T};T{
+\fIunsigned long \fR
+flags
+T}
+217;sys_getdents64;T{
+\fIunsigned int \fR
+fd
+T};T{
+\fIstruct linux_dirent64 *\fR
+dirent
+T};T{
+\fIunsigned int \fR
+count
+T}
+218;sys_set_tid_address;T{
+\fIint *\fR
+tidptr
+T}
+219;sys_restart_syscall
+220;sys_semtimedop;T{
+\fIint \fR
+semid
+T};T{
+\fIstruct sembuf *\fR
+tsops
+T};T{
+\fIunsigned \fR
+nsops
+T};T{
+\fIconst struct timespec *\fR
+timeout
+T}
+221;sys_fadvise64;T{
+\fIint \fR
+fd
+T};T{
+\fIloff_t \fR
+offset
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIint \fR
+advice
+T}
+222;sys_timer_create;T{
+\fIconst clockid_t \fR
+which_clock
+T};T{
+\fIstruct sigevent *\fR
+timer_event_spec
+T};T{
+\fItimer_t *\fR
+created_timer_id
+T}
+223;sys_timer_settime;T{
+\fItimer_t \fR
+timer_id
+T};T{
+\fIint \fR
+flags
+T};T{
+\fIconst struct itimerspec *\fR
+new_setting
+T};T{
+\fIstruct itimerspec *\fR
+old_setting
+T}
+224;sys_timer_gettime;T{
+\fItimer_t \fR
+timer_id
+T};T{
+\fIstruct itimerspec *\fR
+setting
+T}
+225;sys_timer_getoverrun;T{
+\fItimer_t \fR
+timer_id
+T}
+226;sys_timer_delete;T{
+\fItimer_t \fR
+timer_id
+T}
+227;sys_clock_settime;T{
+\fIconst clockid_t \fR
+which_clock
+T};T{
+\fIconst struct timespec *\fR
+tp
+T}
+228;T{
+\fI\fR
+sys_clock_gettime
+T};T{
+\fIconst clockid_t \fR
+which_clock
+T};T{
+\fIstruct timespec *\fR
+tp
+T}
+229;sys_clock_getres;T{
+\fIconst clockid_t \fR
+which_clock
+T};T{
+\fIstruct timespec *\fR
+tp
+T}
+230;sys_clock_nanosleep;T{
+\fIconst clockid_t \fR
+which_clock
+T};T{
+\fIint \fR
+flags
+T};T{
+\fIconst struct timespec *\fR
+rqtp
+T};T{
+\fIstruct timespec *\fR
+rmtp
+T}
+231;sys_exit_group;T{
+\fIint \fR
+error_code
+T}
+232;sys_epoll_wait;T{
+\fIint \fR
+epfd
+T};T{
+\fIstruct epoll_event *\fR
+events
+T};T{
+\fIint \fR
+maxevents
+T};T{
+\fIint \fR
+timeout
+T}
+233;sys_epoll_ctl;T{
+\fIint \fR
+epfd
+T};T{
+\fIint \fR
+op
+T};T{
+\fIint \fR
+fd
+T};T{
+\fIstruct epoll_event *\fR
+event
+T}
+234;sys_tgkill;T{
+\fIpid_t \fR
+tgid
+T};T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+sig
+T}
+235;sys_utimes;T{
+\fIchar *\fR
+filename
+T};T{
+\fIstruct timeval *\fR
+utimes
+T}
+236;sys_vserver;T{
+NOT IMPLEMENTED
+T}
+237;sys_mbind;T{
+\fIunsigned long \fR
+start
+T};T{
+\fIunsigned long \fR
+len
+T};T{
+\fIunsigned long \fR
+mode
+T};T{
+\fIunsigned long *\fR
+nmask
+T};T{
+\fIunsigned long \fR
+maxnode
+T};T{
+\fIunsigned \fR
+flags
+T}
+238;sys_set_mempolicy;T{
+\fIint \fR
+mode
+T};T{
+\fIunsigned long *\fR
+nmask
+T};T{
+\fIunsigned long \fR
+maxnode
+T}
+239;sys_get_mempolicy;T{
+\fIint *\fR
+policy
+T};T{
+\fIunsigned long *\fR
+nmask
+T};T{
+\fIunsigned long \fR
+maxnode
+T};T{
+\fIunsigned long \fR
+addr
+T};T{
+\fIunsigned long \fR
+flags
+T}
+240;sys_mq_open;T{
+\fIconst char *\fR
+u_name
+T};T{
+\fIint \fR
+oflag
+T};T{
+\fImode_t \fR
+mode
+T};T{
+\fIstruct mq_attr *\fR
+u_attr
+T}
+241;sys_mq_unlink;T{
+\fIconst char *\fR
+u_name
+T}
+242;sys_mq_timedsend;T{
+\fImqd_t \fR
+mqdes
+T};T{
+\fIconst char *\fR
+u_msg_ptr
+T};T{
+\fIsize_t \fR
+msg_len
+T};T{
+\fIunsigned int \fR
+msg_prio
+T};T{
+\fIconst stuct timespec *\fR
+u_abs_timeout
+T}
+243;sys_mq_timedreceive;T{
+\fImqd_t \fR
+mqdes
+T};T{
+\fIchar *\fR
+u_msg_ptr
+T};T{
+\fIsize_t \fR
+msg_len
+T};T{
+\fIunsigned int *\fR
+u_msg_prio
+T};T{
+\fIconst struct timespec *\fR
+u_abs_timeout
+T}
+244;sys_mq_notify;T{
+\fImqd_t \fR
+mqdes
+T};T{
+\fIconst struct sigevent *\fR
+u_notification
+T}
+245;sys_mq_getsetattr;T{
+\fImqd_t \fR
+mqdes
+T};T{
+\fIconst struct mq_attr *\fR
+u_mqstat
+T};T{
+\fIstruct mq_attr *\fR
+u_omqstat
+T}
+246;sys_kexec_load;T{
+\fIunsigned long \fR
+entry
+T};T{
+\fIunsigned long \fR
+nr_segments
+T};T{
+\fIstruct kexec_segment *\fR
+segments
+T};T{
+\fIunsigned long \fR
+flags
+T}
+247;sys_waitid;T{
+\fIint \fR
+which
+T};T{
+\fIpid_t \fR
+upid
+T};T{
+\fIstruct siginfo *\fR
+infop
+T};T{
+\fIint \fR
+options
+T};T{
+\fIstruct rusage *\fR
+ru
+T}
+248;sys_add_key;T{
+\fIconst char *\fR
+_type
+T};T{
+\fIconst char *\fR
+_description
+T};T{
+\fIconst void *\fR
+_payload
+T};T{
+\fIsize_t \fR
+plen
+T}
+249;sys_request_key;T{
+\fIconst char *\fR
+_type
+T};T{
+\fIconst char *\fR
+_description
+T};T{
+\fIconst char *\fR
+_callout_info
+T};T{
+\fIkey_serial_t \fR
+destringid
+T}
+250;sys_keyctl;T{
+\fIint \fR
+option
+T};T{
+\fIunsigned long arg2\fR
+T};T{
+\fIunsigned long arg3\fR
+T};T{
+\fIunsigned long arg4\fR
+T};T{
+\fIunsigned long arg5\fR
+T}
+251;sys_ioprio_set;T{
+\fIint \fR
+which
+T};T{
+\fIint \fR
+who
+T};T{
+\fIint \fR
+ioprio
+T}
+252;sys_ioprio_get;T{
+\fIint \fR
+which
+T};T{
+\fIint \fR
+who
+T}
+253;sys_inotify_init
+254;sys_inotify_add_watch;T{
+\fIint \fR
+fd
+T};T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIu32 \fR
+mask
+T}
+255;sys_inotify_rm_watch;T{
+\fIint \fR
+fd
+T};T{
+\fI__s32 \fR
+wd
+T}
+256;sys_migrate_pages;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIunsigned long \fR
+maxnode
+T};T{
+\fIconst unsigned long *\fR
+old_nodes
+T};T{
+\fIconst unsigned long *\fR
+new_nodes
+T}
+257;sys_openat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIint \fR
+flags
+T};T{
+\fIint \fR
+mode
+T}
+258;sys_mkdirat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIint \fR
+mode
+T}
+259;sys_mknodat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIint \fR
+mode
+T};T{
+\fIunsigned \fR
+dev
+T}
+260;sys_fchownat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIuid_t \fR
+user
+T};T{
+\fIgid_t \fR
+group
+T};T{
+\fIint \fR
+flag
+T}
+261;sys_futimesat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIstruct timeval *\fR
+utimes
+T}
+262;sys_newfstatat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIstruct stat *\fR
+statbuf
+T};T{
+\fIint \fR
+flag
+T}
+263;sys_unlinkat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIint \fR
+flag
+T}
+264;sys_renameat;T{
+\fIint \fR
+oldfd
+T};T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIint \fR
+newfd
+T};T{
+\fIconst char *\fR
+newname
+T}
+265;sys_linkat;T{
+\fIint \fR
+oldfd
+T};T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIint \fR
+newfd
+T};T{
+\fIconst char *\fR
+newname
+T};T{
+\fIint \fR
+flags
+T}
+266;sys_symlinkat;T{
+\fIconst char *\fR
+oldname
+T};T{
+\fIint \fR
+newfd
+T};T{
+\fIconst char *\fR
+newname
+T}
+267;sys_readlinkat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+pathname
+T};T{
+\fIchar *\fR
+buf
+T};T{
+\fIint \fR
+bufsiz
+T}
+268;sys_fchmodat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fImode_t \fR
+mode
+T}
+269;sys_faccessat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIint \fR
+mode
+T}
+270;sys_pselect6;T{
+\fIint \fR
+n
+T};T{
+\fIfd_set *\fR
+inp
+T};T{
+\fIfd_set *\fR
+outp
+T};T{
+\fIfd_set *\fR
+exp
+T};T{
+\fIstruct timespec *\fR
+tsp
+T};T{
+\fIvoid *\fR
+sig
+T}
+271;sys_ppoll;T{
+\fIstruct pollfd *\fR
+ufds
+T};T{
+\fIunsigned int \fR
+nfds
+T};T{
+\fIstruct timespec *\fR
+tsp
+T};T{
+\fIconst sigset_t *\fR
+sigmask
+T};T{
+\fIsize_t \fR
+sigsetsize
+T}
+272;sys_unshare;T{
+\fIunsigned long \fR
+unshare_flags
+T}
+273;sys_set_robust_list;T{
+\fIstruct robust_list_head *\fR
+head
+T};T{
+\fIsize_t \fR
+len
+T}
+274;sys_get_robust_list;T{
+\fIint \fR
+pid
+T};T{
+\fIstruct robust_list_head **\fR
+head_ptr
+T};T{
+\fIsize_t *\fR
+len_ptr
+T}
+275;sys_splice;T{
+\fIint \fR
+fd_in
+T};T{
+\fIloff_t *\fR
+off_in
+T};T{
+\fIint \fR
+fd_out
+T};T{
+\fIloff_t *\fR
+off_out
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIunsigned int \fR
+flags
+T}
+276;sys_tee;T{
+\fIint \fR
+fdin
+T};T{
+\fIint \fR
+fdout
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIunsigned int \fR
+flags
+T}
+277;sys_sync_file_range;T{
+\fIlong \fR
+fd
+T};T{
+\fIloff_t \fR
+offset
+T};T{
+\fIloff_t \fR
+bytes
+T};T{
+\fIlong \fR
+flags
+T}
+278;sys_vmsplice;T{
+\fIint \fR
+fd
+T};T{
+\fIconst struct iovec *\fR
+iov
+T};T{
+\fIunsigned long \fR
+nr_segs
+T};T{
+\fIunsigned int \fR
+flags
+T}
+279;sys_move_pages;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIunsigned long \fR
+nr_pages
+T};T{
+\fIconst void **\fR
+pages
+T};T{
+\fIconst int *\fR
+nodes
+T};T{
+\fIint *\fR
+status
+T};T{
+\fIint \fR
+flags
+T}
+280;sys_utimensat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+filename
+T};T{
+\fIstruct timespec *\fR
+utimes
+T};T{
+\fIint \fR
+flags
+T}
+281;sys_epoll_pwait;T{
+\fIint \fR
+epfd
+T};T{
+\fIstruct epoll_event *\fR
+events
+T};T{
+\fIint \fR
+maxevents
+T};T{
+\fIint \fR
+timeout
+T};T{
+\fIconst sigset_t *\fR
+sigmask
+T};T{
+\fIsize_t \fR
+sigsetsize
+T}
+282;sys_signalfd;T{
+\fIint \fR
+ufd
+T};T{
+\fIsigset_t *\fR
+user_mask
+T};T{
+\fIsize_t \fR
+sizemask
+T}
+283;sys_timerfd_create;T{
+\fIint \fR
+clockid
+T};T{
+\fIint \fR
+flags
+T}
+284;sys_eventfd;T{
+\fIunsigned int \fR
+count
+T}
+285;sys_fallocate;T{
+\fIlong \fR
+fd
+T};T{
+\fIlong \fR
+mode
+T};T{
+\fIloff_t \fR
+offset
+T};T{
+\fIloff_t \fR
+len
+T}
+286;sys_timerfd_settime;T{
+\fIint \fR
+ufd
+T};T{
+\fIint \fR
+flags
+T};T{
+\fIconst struct itimerspec *\fR
+utmr
+T};T{
+\fIstruct itimerspec *\fR
+otmr
+T}
+287;sys_timerfd_gettime;T{
+\fIint \fR
+ufd
+T};T{
+\fIstruct itimerspec *\fR
+otmr
+T}
+288;sys_accept4;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct sockaddr *\fR
+upeer_sockaddr
+T};T{
+\fIint *\fR
+upeer_addrlen
+T};T{
+\fIint \fR
+flags
+T}
+289;sys_signalfd4;T{
+\fIint \fR
+ufd
+T};T{
+\fIsigset_t *\fR
+user_mask
+T};T{
+\fIsize_t \fR
+sizemask
+T};T{
+\fIint \fR
+flags
+T}
+290;sys_eventfd2;T{
+\fIunsigned int \fR
+count
+T};T{
+\fIint \fR
+flags
+T}
+291;sys_epoll_create1;T{
+\fIint \fR
+flags
+T}
+292;sys_dup3;T{
+\fIunsigned int \fR
+oldfd
+T};T{
+\fIunsigned int \fR
+newfd
+T};T{
+\fIint \fR
+flags
+T}
+293;sys_pipe2;T{
+\fIint *\fR
+filedes
+T};T{
+\fIint \fR
+flags
+T}
+294;sys_inotify_init1;T{
+\fIint \fR
+flags
+T}
+295;sys_preadv;T{
+\fIunsigned long \fR
+fd
+T};T{
+\fIconst struct iovec *\fR
+vec
+T};T{
+\fIunsigned long \fR
+vlen
+T};T{
+\fIunsigned long \fR
+pos_l
+T};T{
+\fIunsigned long \fR
+pos_h
+T}
+296;sys_pwritev;T{
+\fIunsigned long \fR
+fd
+T};T{
+\fIconst struct iovec *\fR
+vec
+T};T{
+\fIunsigned long \fR
+vlen
+T};T{
+\fIunsigned long \fR
+pos_l
+T};T{
+\fIunsigned long \fR
+pos_h
+T}
+297;sys_rt_tgsigqueueinfo;T{
+\fIpid_t \fR
+tgid
+T};T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+sig
+T};T{
+\fIsiginfo_t *\fR
+uinfo
+T}
+298;sys_perf_event_open;T{
+\fIstruct perf_event_attr *\fR
+attr_uptr
+T};T{
+\fIpid_t \fR
+pid
+T};T{
+\fIint \fR
+cpu
+T};T{
+\fIint \fR
+group_fd
+T};T{
+\fIunsigned long \fR
+flags
+T}
+299;sys_recvmmsg;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct msghdr *\fR
+mmsg
+T};T{
+\fIunsigned int \fR
+vlen
+T};T{
+\fIunsigned int \fR
+flags
+T};T{
+\fIstruct timespec *\fR
+timeout
+T}
+300;sys_fanotify_init;T{
+\fIunsigned int \fR
+flags
+T};T{
+\fIunsigned int \fR
+event_f_flags
+T}
+301;sys_fanotify_mark;T{
+\fIlong \fR
+fanotify_fd
+T};T{
+\fIlong \fR
+flags
+T};T{
+\fI__u64 \fR
+mask
+T};T{
+\fIlong \fR
+dfd
+T};T{
+\fIlong \fR
+pathname
+T}
+302;sys_prlimit64;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIunsigned int \fR
+resource
+T};T{
+\fIconst struct rlimit64 *\fR
+new_rlim
+T};T{
+\fIstruct rlimit64 *\fR
+old_rlim
+T}
+303;sys_name_to_handle_at;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIstruct file_handle *\fR
+handle
+T};T{
+\fIint *\fR
+mnt_id
+T};T{
+\fIint \fR
+flag
+T}
+304;sys_open_by_handle_at;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char *\fR
+name
+T};T{
+\fIstruct file_handle *\fR
+handle
+T};T{
+\fIint *\fR
+mnt_id
+T};T{
+\fIint \fR
+flags
+T}
+305;sys_clock_adjtime;T{
+\fIclockid_t \fR
+which_clock
+T};T{
+\fIstruct timex *\fR
+tx
+T}
+306;sys_syncfs;T{
+\fIint \fR
+fd
+T}
+307;sys_sendmmsg;T{
+\fIint \fR
+fd
+T};T{
+\fIstruct mmsghdr *\fR
+mmsg
+T};T{
+\fIunsigned int \fR
+vlen
+T};T{
+\fIunsigned int \fR
+flags
+T}
+308;sys_setns;T{
+\fIint \fR
+fd
+T};T{
+\fIint \fR
+nstype
+T}
+309;sys_getcpu;T{
+\fIunsigned *\fR
+cpup
+T};T{
+\fIunsigned *\fR
+nodep
+T};T{
+\fIstruct getcpu_cache *\fR
+unused
+T}
+310;sys_process_vm_readv;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIconst struct iovec *\fR
+lvec
+T};T{
+\fIunsigned long \fR
+liovcnt
+T};T{
+\fIconst struct iovec *\fR
+rvec
+T};T{
+\fIunsigned long \fR
+riovcnt
+T};T{
+\fIunsigned long \fR
+flags
+T}
+311;sys_process_vm_writev;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIconst struct iovec *\fR
+lvec
+T};T{
+\fIunsigned long \fR
+liovcnt
+T};T{
+\fIconst struct iovcc *\fR
+rvec
+T};T{
+\fIunsigned long \fR
+riovcnt
+T};T{
+\fIunsigned long \fR
+flags
+T}
+312;sys_kcmp;T{
+\fIpid_t pid1\fR
+T};T{
+\fIpid_t pid2\fR
+T};T{
+\fIint \fR
+type
+T};T{
+\fIunsigned long idx1\fR
+T};T{
+\fIunsigned long idx2\fR
+T}
+313;sys_finit_module;T{
+\fIint \fR
+fd
+T};T{
+\fIconst char __user *\fR
+uargs
+T};T{
+\fIint \fR
+flags
+T}
+314;sys_sched_setattr;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIstruct sched_attr __user *\fR
+attr
+T};T{
+\fIunsigned int \fR
+flags
+T}
+315;sys_sched_getattr;T{
+\fIpid_t \fR
+pid
+T};T{
+\fIstruct sched_attr __user *\fR
+attr
+T};T{
+\fIunsigned int \fR
+size
+T};T{
+\fIunsigned int \fR
+flags
+T}
+316;sys_renameat2;T{
+\fIint \fR
+olddfd
+T};T{
+\fIconst char __user *\fR
+oldname
+T};T{
+\fIint \fR
+newdfd
+T};T{
+\fIconst char __user *\fR
+newname
+T};T{
+\fIunsigned int \fR
+flags
+T}
+317;sys_seccomp;T{
+\fIunsigned int \fR
+op
+T};T{
+\fIunsigned int \fR
+flags
+T};T{
+\fIconst char __user *\fR
+uargs
+T}
+318;sys_getrandom;T{
+\fIchar __user *\fR
+buf
+T};T{
+\fIsize_t \fR
+count
+T};T{
+\fIunsigned int \fR
+flags
+T}
+319;sys_memfd_create;T{
+\fIconst char __user *\fR
+uname_ptr
+T};T{
+\fIunsigned int \fR
+flags
+T}
+320;sys_kexec_file_load;T{
+\fIint \fR
+kernel_fd
+T};T{
+\fIint \fR
+initrd_fd
+T};T{
+\fIunsigned long \fR
+cmdline_len
+T};T{
+\fIconst char __user *\fR
+cmdline_ptr
+T};T{
+\fIunsigned long \fR
+flags
+T}
+321;sys_bpf;T{
+\fIint \fR
+cmd
+T};T{
+\fIunion bpf_attr *\fR
+attr
+T};T{
+\fIunsigned int \fR
+size
+T}
+322;stub_execveat;T{
+\fIint \fR
+dfd
+T};T{
+\fIconst char __user *\fR
+filename
+T};T{
+\fIconst char __user *const __user *\fR
+argv
+T};T{
+\fIconst char __user *const __user *\fR
+envp
+T};T{
+\fIint \fR
+flags
+T}
+323;userfaultfd;T{
+\fIint \fR
+flags
+T}
+324;membarrier;T{
+\fIint \fR
+cmd
+T};T{
+\fIint \fR
+flags
+T}
+325;mlock2;T{
+\fIunsigned long \fR
+start
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIint \fR
+flags
+T}
+326;copy_file_range;T{
+\fIint \fR
+fd_in
+T};T{
+\fIloff_t __user *\fR
+off_in
+T};T{
+\fIint \fR
+fd_out
+T};T{
+\fIloff_t __user * \fR
+off_out
+T};T{
+\fIsize_t \fR
+len
+T};T{
+\fIunsigned int \fR
+flags
+T}
+327;preadv2;T{
+\fIunsigned long \fR
+fd
+T};T{
+\fIconst struct iovec __user *\fR
+vec
+T};T{
+\fIunsigned long \fR
+vlen
+T};T{
+\fIunsigned long \fR
+pos_l
+T};T{
+\fIunsigned long \fR
+pos_h
+T};T{
+\fIint \fR
+flags
+T}
+328;pwritev2;T{
+\fIunsigned long \fR
+fd
+T};T{
+\fIconst struct iovec __user *\fR
+vec
+T};T{
+\fIunsigned long \fR
+vlen
+T};T{
+\fIunsigned long \fR
+pos_l
+T};T{
+\fIunsigned long \fR
+pos_h
+T};T{
+\fIint \fR
+flags
+T}
+329;pkey_mprotect;
+330;pkey_alloc;
+331;pkey_free;
+332;statx;
+333;io_pgetevents;
+334;rseq;
+335;pkey_mprotect;
+.TE
